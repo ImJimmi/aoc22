@@ -8,7 +8,7 @@ function readLocalFile(localFileName: string): string {
 }
 
 function part1() {
-    const caloriesList = readLocalFile("part1.txt");
+    const caloriesList = readLocalFile("calories-list.txt");
     console.log(
         collectElves(caloriesList)
             .sort(compareInventories)
@@ -18,4 +18,17 @@ function part1() {
     );
 }
 
+function part2() {
+    const caloriesList = readLocalFile("calories-list.txt");
+    console.log(
+        collectElves(caloriesList)
+            .sort(compareInventories)
+            .reverse()
+            .slice(0, 3)
+            .map(elf => countCalories(elf))
+            .reduce((previous, current) => previous + current)
+    );
+}
+
 part1();
+part2();
