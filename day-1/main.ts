@@ -1,15 +1,9 @@
-import {readFileSync} from "fs";
-import {join} from "path";
 import {collectElves} from "./elves";
 import {compare, sum} from "../utils/math";
-
-function readLocalFile(localFileName: string): string {
-    const fullPath = join(__dirname, localFileName).replace("out/", "");
-    return readFileSync(fullPath).toString();
-}
+import {readLocalFile} from "../utils/io";
 
 function part1() {
-    const caloriesList = readLocalFile("calories-list.txt");
+    const caloriesList = readLocalFile("calories-list.txt",__dirname);
     console.log(
         collectElves(caloriesList)
             .sort(compare)
@@ -20,7 +14,7 @@ function part1() {
 }
 
 function part2() {
-    const caloriesList = readLocalFile("calories-list.txt");
+    const caloriesList = readLocalFile("calories-list.txt", __dirname);
     console.log(
         collectElves(caloriesList)
             .sort(compare)
